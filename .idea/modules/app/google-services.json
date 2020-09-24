@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "323340981823",
+    "firebase_url": "https://projetofrella.firebaseio.com",
+    "project_id": "projetofrella",
+    "storage_bucket": "projetofrella.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323340981823:android:6776e8f9249b220f660a8a",
+        "android_client_info": {
+          "package_name": "com.daviazevedodev.frella"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323340981823-m7pj56b2f1saa5mtk3hv00s0qbv50qed.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.daviazevedodev.frella",
+            "certificate_hash": "843773d1763400979ab558358f81e18cdccdcb7d"
+          }
+        },
+        {
+          "client_id": "323340981823-nul4gqrlutpa0vauug93q4gpvgk07d2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjyrFn9qE4m_fPQOpJuo5-oVFzdCCI2P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323340981823-nul4gqrlutpa0vauug93q4gpvgk07d2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

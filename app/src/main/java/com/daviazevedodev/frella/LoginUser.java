@@ -23,7 +23,6 @@ public class LoginUser extends AppCompatActivity {
     private EditText edit_email, edit_password;
     private Button button_login;
     private Button button_register;
-    private Button sair;
 
 
 
@@ -39,23 +38,20 @@ public class LoginUser extends AppCompatActivity {
         edit_password = findViewById(R.id.edit_password);
         button_login = findViewById(R.id.button_login);
         button_register = findViewById(R.id.button_register);
-        sair = findViewById(R.id.sair);
 
 
 
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(edit_email.getText().toString(), edit_password.getText().toString());
+                if (edit_email.getText().toString().isEmpty() || (edit_password.getText().toString().isEmpty()))  {
+                    Toast.makeText(LoginUser.this, "Fill in all the fields!", Toast.LENGTH_SHORT).show();
+                }  else {
+                    login(edit_email.getText().toString(), edit_password.getText().toString());
+                }
             }
         });
 
-        sair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
 
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override

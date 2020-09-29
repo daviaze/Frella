@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:hint="City"
         android:ems="10"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -53,7 +52,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Telephone"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -67,7 +65,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="E-mail"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -90,15 +87,28 @@
         app:layout_constraintVertical_bias="0.798" />
 
     <Button
-        android:id="@+id/button_register"
+    android:id="@+id/button_register"
+    android:layout_width="219dp"
+    android:layout_height="44dp"
+    android:text="Sign Up"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.495"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.894" />
+
+    <Button
+        android:id="@+id/button_back_login"
         android:layout_width="219dp"
         android:layout_height="44dp"
-        android:text="Sign Up"
+        android:text="Back to Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintVertical_bias="0.976" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,10 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daviazevedodev.frella.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +25,9 @@ public class Home extends AppCompatActivity {
     private TextView textview_name;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-    private static final String USERS = "Users";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,35 +35,30 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         textview_name = findViewById(R.id.textview_name);
-
-        database = FirebaseDatabase.getInstance();
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child(USERS);
-
-        Intent intent = getIntent();
-        final String email = intent.getStringExtra("email");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-
-
-        userRef.addValueEventListener(new ValueEventListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                        textview_name.setText("Bem vindo, "+ds.child("name").getValue(String.class)+"!");
-                }
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
+                String name_db = dataSnapshot.child("Users").child(currentFirebaseUser.getUid()).child("name").getValue(String.class);
+                textview_name.setText("Welcome, "+ name_db+"!");
             }
-
-
-
-
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("TAG", "Failed to read value.", error.toException());
             }
-
         });
-    }
+
+
+}
+
 }
 

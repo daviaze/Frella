@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Adicionar"
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_add_circle_24"
+        />
+
+    <item android:title="Explorar"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:checked="true"
+        android:visible="true"
+        android:visibility="gone"
+        />
+
+    <item android:title="Perfil"
+        android:id="@+id/car"
+        android:icon="@drawable/ic_baseline_person_24"/>
+</menu>

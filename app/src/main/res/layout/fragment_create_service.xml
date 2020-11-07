@@ -6,58 +6,138 @@
     android:orientation="vertical"
     tools:context=".Fragments.CreateService">
 
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
 
 
-     <EditText
-         android:id="@+id/service_value"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:ems="10"
-         android:inputType="textPersonName"
-         android:text="Name" />
-
-     <EditText
-     android:id="@+id/name_value"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:ems="10"
-     android:inputType="textPersonName"
-     android:text="Name" />
+        <EditText
+            android:id="@+id/service_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Serviço oferecido" />
 
 
-     <EditText
-         android:id="@+id/works_value"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:ems="10"
-         android:inputType="textPersonName"
-         android:text="Name" />
+        <EditText
+            android:id="@+id/name_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Nome do prestador"
+            android:layout_marginTop="10dp"/>
 
-     <EditText
-         android:id="@+id/tell_value"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:ems="10"
-         android:inputType="phone" />
+        <EditText
+            android:id="@+id/works_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Portifólio"
+            android:layout_marginTop="10dp"/>
 
-     <EditText
-         android:id="@+id/description_value"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:ems="10"
-         android:gravity="start|top"
-         android:inputType="textMultiLine" />
+        <EditText
+            android:id="@+id/tell_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="phone"
+            android:hint="Telefone"
+            android:layout_marginTop="10dp"/>
 
-     <RadioGroup
-         android:id="@+id/area_value"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/description_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:hint="Descrição do serviço"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/escolha_servicos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de serviço oferecido: "
+            android:textAlignment="center"
+            />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="160dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            >
+
+            <RadioButton
+                android:id="@+id/radio_tecnologia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Tecnologia" />
+
+            <RadioButton
+                android:id="@+id/radio_design"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="Design" />
+
+            <RadioButton
+                android:id="@+id/radio_reforco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="Reforço Escolar" />
+
+            <RadioButton
+                android:id="@+id/radio_musica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="Música" />
+
+            <RadioButton
+                android:id="@+id/radio_arquitetura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="Arquitetura" />
+
+            <RadioButton
+                android:id="@+id/radio_saude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="Saúde" />
 
 
- </LinearLayout>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_criar"
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Criar"
+            android:background="@color/Azul"
+            android:textColor="@color/colorPrimary"
+            />
+
+
+    </LinearLayout>
 
 </FrameLayout>

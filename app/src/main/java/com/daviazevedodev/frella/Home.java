@@ -1,8 +1,13 @@
 package com.daviazevedodev.frella;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,8 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.daviazevedodev.frella.Fragments.CreateService;
+import com.daviazevedodev.frella.Model.Categoria;
 import com.daviazevedodev.frella.Model.User;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,10 +31,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Home extends AppCompatActivity {
-    private TextView textview_name;
+    private TextView textview_name, textview_city;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
+    List<Categoria> listcategoria;
 
 
 
@@ -35,6 +51,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         textview_name = findViewById(R.id.textview_name);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
@@ -47,7 +64,10 @@ public class Home extends AppCompatActivity {
                 FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
                 String name_db = dataSnapshot.child("Users").child(currentFirebaseUser.getUid()).child("name").getValue(String.class);
-                textview_name.setText("Welcome, "+ name_db+"!");
+                String city_db = dataSnapshot.child("Users").child(currentFirebaseUser.getUid()).child("city").getValue(String.class);
+
+                  textview_name.setText(name_db+", "+city_db);
+
             }
 
             @Override
@@ -57,8 +77,56 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        listcategoria = new ArrayList<>();
+        listcategoria.add((new Categoria("Tecnologia", R.drawable.pcazul)));
+        listcategoria.add((new Categoria("Design", R.drawable.designazul)));
+        listcategoria.add((new Categoria("Reforço escolar", R.drawable.reforcoazul)));
+        listcategoria.add((new Categoria("Música", R.drawable.musicaazul)));
+        listcategoria.add((new Categoria("Arquitetura", R.drawable.engenhariaazulk)));
+        listcategoria.add((new Categoria("Saúde", R.drawable.saudeazul)));
 
-}
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_feed);
+        FeedAdapter myAdapter = new FeedAdapter(this,listcategoria);
+        myrv.setLayoutManager(new GridLayoutManager(this,2));
+        myrv.setAdapter(myAdapter);
+
+        BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.adicionar:
+                    CreateService timesFragment = new CreateService();
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.bloco, timesFragment).commit();
+                    FrameLayout fl = (FrameLayout) findViewById(R.id.bloco);
+                    RecyclerView feed = (RecyclerView) findViewById(R.id.recyclerview_feed);
+                    TextView text_name = (TextView) findViewById(R.id.textview_name);
+                    ImageView image_person = (ImageView) findViewById(R.id.image_person);
+
+                    feed.setVisibility(View.INVISIBLE);
+                    text_name.setText("Criar Serviço"); image_person.setImageResource(R.drawable.ic_baseline_add_circle_24);
+
+
+                    fl.setVisibility(View.VISIBLE);
+                    return true;
+
+                case R.id.home:
+                    startActivity(new Intent (getApplicationContext(), Home.class));
+                    overridePendingTransition(0,0);
+                    return true;
+            }
+            return false;
+        }
+
+    };
+
+
 
 }
 

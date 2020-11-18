@@ -37,6 +37,8 @@ public class CreateService extends Fragment {
     private TextView text;
     private EditText service_value, name_value, works_value, tell_value, description_value;
     private Button button_criar;
+    private RadioGroup radioGroup;
+    private RadioButton radio_tecnologia, radio_design, radio_reforco, radio_musica, radio_arquitetura, radio_saude, radioButton;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -47,6 +49,7 @@ public class CreateService extends Fragment {
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
 
@@ -54,7 +57,7 @@ public class CreateService extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_create_service, container, false);
+        final View view = inflater.inflate(R.layout.fragment_create_service, container, false);
         text=view.findViewById(R.id.escolha_servicos);
         service_value=view.findViewById(R.id.service_value);
         name_value=view.findViewById(R.id.name_value);
@@ -62,6 +65,16 @@ public class CreateService extends Fragment {
         tell_value=view.findViewById(R.id.tell_value);
         description_value=view.findViewById(R.id.description_value);
         button_criar=view.findViewById(R.id.button_criar);
+        radioGroup=view.findViewById(R.id.radio_group);
+        radio_tecnologia=view.findViewById(R.id.radio_tecnologia);
+        radio_design=view.findViewById(R.id.radio_design);
+        radio_reforco=view.findViewById(R.id.radio_reforco);
+        radio_musica=view.findViewById(R.id.radio_musica);
+        radio_arquitetura=view.findViewById(R.id.radio_arquitetura);
+        radio_saude=view.findViewById(R.id.radio_saude);
+
+
+
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Services");
@@ -76,7 +89,7 @@ public class CreateService extends Fragment {
                 String worksvalue = works_value.getText().toString();
                 String tellvalue = tell_value.getText().toString();
                 String descriptionvalue = description_value.getText().toString();
-                String buttoncriar = button_criar.getText().toString();
+
 
                 service.setName_service(servicevalue);
                 service.setName_person(namevalue);
@@ -87,12 +100,81 @@ public class CreateService extends Fragment {
 
                 mDatabase.push().setValue(service);
 
+
+
+
             }
 
     });
+
+        radio_tecnologia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+        radio_design.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+        radio_reforco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+        radio_musica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+        radio_arquitetura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+        radio_saude.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioid = radioGroup.getCheckedRadioButtonId();
+                radioButton = view.findViewById(radioid);
+
+                service.setArea(radioButton.getText().toString());
+            }
+        });
+
+
+
         return view;
 
     }
-    }
+
+
+
+}
 
 

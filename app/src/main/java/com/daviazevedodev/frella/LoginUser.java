@@ -45,7 +45,7 @@ public class LoginUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (edit_email.getText().toString().isEmpty() || (edit_password.getText().toString().isEmpty()))  {
-                    Toast.makeText(LoginUser.this, "Fill in all the fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginUser.this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 }  else {
                     login(edit_email.getText().toString(), edit_password.getText().toString());
                 }
@@ -63,9 +63,23 @@ public class LoginUser extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser currentUser) {
+        if (currentUser != null) {
+        }else {
+
+            }
+        }
 
 
     private void login(String email, String password){
+        mAuth.signInAnonymously();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -73,14 +87,16 @@ public class LoginUser extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "createUserWithEmail:success");
-                            Toast.makeText(LoginUser.this, "Login sucess!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginUser.this, "Login com sucesso!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), Home.class);
                             startActivity(intent);
                             finish();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(LoginUser.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginUser.this, "Erro na autenticação", Toast.LENGTH_SHORT).show();
+
                         }
 
                         // ...

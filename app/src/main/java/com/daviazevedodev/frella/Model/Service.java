@@ -9,15 +9,19 @@ public class Service {
     private String portifolio;
     private String telephone;
     private String description;
+    private String area;
+
 
     public Service () {}
 
-    public Service(String name_service, String name_person, String portifolio, String telephone, String description){
+    public Service(String name_service, String name_person, String portifolio, String telephone, String description, String area){
         this.name_service = name_service;
         this.name_person = name_person;
         this.portifolio = portifolio;
         this.telephone = telephone;
         this.description = description;
+        this.area = area;
+
     }
 
 
@@ -59,6 +63,14 @@ public class Service {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 
 }

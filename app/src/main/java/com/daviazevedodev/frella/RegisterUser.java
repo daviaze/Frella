@@ -53,7 +53,7 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (edit_register_email.getText().toString().isEmpty() || edit_name.getText().toString().isEmpty() || edit_city.getText().toString().isEmpty() || edit_tell.getText().toString().isEmpty() || edit_register_password.getText().toString().isEmpty() ) {
-                    Toast.makeText(RegisterUser.this, "Fill in all the fields!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUser.this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 }else {
                     register(edit_register_email.getText().toString(), edit_register_password.getText().toString());
                 }
@@ -101,7 +101,7 @@ public class RegisterUser extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d("TAG", "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        Toast.makeText(RegisterUser.this, "Sign Up Sucess !",
+                                        Toast.makeText(RegisterUser.this, "Registrado com sucesso!",
                                                 Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), LoginUser.class);
                                         startActivity(intent);
@@ -109,7 +109,7 @@ public class RegisterUser extends AppCompatActivity {
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(RegisterUser.this, "Sign Up failed.",
+                                        Toast.makeText(RegisterUser.this, "Falha no registro.",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -117,7 +117,7 @@ public class RegisterUser extends AppCompatActivity {
 
                         } else {
                             Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterUser.this, "Sign Up failed.",
+                            Toast.makeText(RegisterUser.this, "Falha no registro.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

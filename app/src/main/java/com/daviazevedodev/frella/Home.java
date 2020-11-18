@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daviazevedodev.frella.Fragments.CreateService;
+import com.daviazevedodev.frella.Fragments.ProfileUser;
 import com.daviazevedodev.frella.Model.Categoria;
 import com.daviazevedodev.frella.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -109,6 +110,8 @@ public class Home extends AppCompatActivity {
                     TextView text_name = (TextView) findViewById(R.id.textview_name);
                     ImageView image_person = (ImageView) findViewById(R.id.image_person);
 
+
+
                     feed.setVisibility(View.INVISIBLE);
                     text_name.setText("Criar Serviço"); image_person.setImageResource(R.drawable.ic_baseline_add_circle_24);
 
@@ -120,7 +123,25 @@ public class Home extends AppCompatActivity {
                     startActivity(new Intent (getApplicationContext(), Home.class));
                     overridePendingTransition(0,0);
                     return true;
+
+                case R.id.perfil:
+                    ProfileUser timesFragment2 = new ProfileUser();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.bloco, timesFragment2).commit();
+
+                    FrameLayout fl2 = (FrameLayout) findViewById(R.id.bloco);
+                    RecyclerView feed2 = (RecyclerView) findViewById(R.id.recyclerview_feed);
+                    TextView text_name2 = (TextView) findViewById(R.id.textview_name);
+                    ImageView image_person2 = (ImageView) findViewById(R.id.image_person);
+
+                    text_name2.setText("Meu Perfil"); image_person2.setImageResource(R.drawable.ic_baseline_person_24);
+
+
+                    feed2.setVisibility(View.INVISIBLE);
+                    fl2.setVisibility(View.VISIBLE);
+                    return true;
+
             }
+
             return false;
         }
 

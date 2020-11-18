@@ -34,21 +34,23 @@ public class ServiceAdapter extends FirebaseRecyclerAdapter<Service, ServiceAdap
         holder.works.setText(model.getPortifolio());
         holder.tell.setText(model.getTelephone());
         holder.description.setText(model.getDescription());
+        holder.area.setText(model.getArea());
 
 
     }
 
     class myviewholder extends RecyclerView.ViewHolder {
 
-          TextView service, name, works, tell, description;
+          TextView service, name, works, tell, description, area;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);
             service = (TextView) itemView.findViewById(R.id.textView);
             name = (TextView) itemView.findViewById(R.id.textView2);
-            works = (TextView) itemView.findViewById(R.id.textView3);
-            tell = (TextView) itemView.findViewById(R.id.textView4);
-            description = (TextView) itemView.findViewById(R.id.textView6);
+            works = (TextView) itemView.findViewById(R.id.textView4);
+            tell = (TextView) itemView.findViewById(R.id.textView6);
+            description = (TextView) itemView.findViewById(R.id.textView3);
+            area = (TextView) itemView.findViewById(R.id.textView5);
         }
     }
 }

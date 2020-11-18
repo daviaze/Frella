@@ -50,6 +50,7 @@
         android:id="@+id/recyclerview_feed"
         android:layout_width="407dp"
         android:layout_height="622dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="5dp"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/fragment"
@@ -64,28 +65,30 @@
         android:id="@+id/image_person"
         android:layout_width="34dp"
         android:layout_height="33dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerview_feed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_person_24" />
 
 
     <TextView
         android:id="@+id/textview_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="40dp"
         android:text="Davi, Itaperuna"
         android:textColor="@color/Orange"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/image_person"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.04000002" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

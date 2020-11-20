@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daviazevedodev.frella.LoginUser;
 import com.daviazevedodev.frella.Model.Service;
 import com.daviazevedodev.frella.Model.User;
 import com.daviazevedodev.frella.R;
@@ -98,7 +99,9 @@ public class CreateService extends Fragment {
                 service.setPortifolio(worksvalue);
 
 
-                mDatabase.push().setValue(service);
+                    mDatabase.push().setValue(service);
+
+
 
 
 

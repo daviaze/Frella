@@ -34,7 +34,6 @@ public class ServiceAdapter extends FirebaseRecyclerAdapter<Service, ServiceAdap
         holder.works.setText(model.getPortifolio());
         holder.tell.setText(model.getTelephone());
         holder.description.setText(model.getDescription());
-        holder.area.setText(model.getArea());
 
 
     }
@@ -50,7 +49,6 @@ public class ServiceAdapter extends FirebaseRecyclerAdapter<Service, ServiceAdap
             works = (TextView) itemView.findViewById(R.id.textView4);
             tell = (TextView) itemView.findViewById(R.id.textView6);
             description = (TextView) itemView.findViewById(R.id.textView3);
-            area = (TextView) itemView.findViewById(R.id.textView5);
         }
     }
 }

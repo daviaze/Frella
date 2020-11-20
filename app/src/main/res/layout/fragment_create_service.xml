@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".Fragments.CreateService"
     >
 
@@ -20,7 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
+            android:textColorHint="#A9FF8A0D"
+            android:padding="6dp"
             android:inputType="textPersonName"
+            android:background="@drawable/rounded_edittext"
             android:hint="Serviço oferecido" />
 
 
@@ -30,8 +34,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
+            android:textColorHint="#A9FF8A0D"
             android:inputType="textPersonName"
             android:hint="Nome do prestador"
+            android:padding="6dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginTop="10dp"/>
 
         <EditText
@@ -39,7 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColorHint="#A9FF8A0D"
             android:ems="10"
+            android:padding="6dp"
+            android:background="@drawable/rounded_edittext"
             android:inputType="textPersonName"
             android:hint="Portifólio"
             android:layout_marginTop="10dp"/>
@@ -50,8 +60,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
+            android:textColorHint="#A9FF8A0D"
             android:inputType="phone"
             android:hint="Telefone"
+            android:padding="6dp"
+            android:background="@drawable/rounded_edittext"
             android:layout_marginTop="10dp"/>
 
         <EditText
@@ -59,10 +72,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="6dp"
             android:ems="10"
             android:gravity="start|top"
+            android:textColorHint="#A9FF8A0D"
             android:inputType="textMultiLine"
-            android:hint="Descrição do serviço"
+            android:background="@drawable/rounded_edittext"
+
+            android:hint="Descrição"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -129,7 +146,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Criar"
-            android:background="@color/Azul"
+            android:translationZ="@dimen/cardview_compat_inset_shadow"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:background="@drawable/rounded_button"
             android:textColor="@color/colorPrimary"
             />
 

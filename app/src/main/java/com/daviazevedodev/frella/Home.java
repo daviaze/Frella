@@ -1,12 +1,15 @@
 package com.daviazevedodev.frella;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +44,7 @@ public class Home extends AppCompatActivity {
     private TextView textview_name, textview_city;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
-    List<Categoria> listcategoria;
+    public List<Categoria> listcategoria;
 
 
 
@@ -81,7 +84,7 @@ public class Home extends AppCompatActivity {
         listcategoria = new ArrayList<>();
         listcategoria.add((new Categoria("Tecnologia", R.drawable.pcazul)));
         listcategoria.add((new Categoria("Design", R.drawable.designazul)));
-        listcategoria.add((new Categoria("Reforço escolar", R.drawable.reforcoazul)));
+        listcategoria.add((new Categoria("Reforço Escolar", R.drawable.reforcoazul)));
         listcategoria.add((new Categoria("Música", R.drawable.musicaazul)));
         listcategoria.add((new Categoria("Arquitetura", R.drawable.engenhariaazulk)));
         listcategoria.add((new Categoria("Saúde", R.drawable.saudeazul)));
@@ -93,6 +96,8 @@ public class Home extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

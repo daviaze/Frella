@@ -2,6 +2,7 @@ package com.daviazevedodev.frella;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, Service_Activity.class);
-                intent.putExtra("Service", mData.get(position).getTitle());
+                intent.putExtra("title", mData.get(position).getTitle());
                 mContext.startActivity(intent);
             }
         });
@@ -68,6 +69,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.MyViewHolder> 
             tx_gategoria_title = (TextView) itemView.findViewById(R.id.text_card_feed) ;
             categoria_thumbnail = (ImageView) itemView.findViewById(R.id.img_card_feed);
             card_feed = (CardView) itemView.findViewById(R.id.card_feed);
+
+
+
         }
     }
 

@@ -25,25 +25,40 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Service_Activity extends AppCompatActivity {
     RecyclerView recview;
     ServiceAdapter adapter;
+    CardView card_feed;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_);
 
+
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
+        CardView card_feed = findViewById(R.id.card_feed);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         recview = (RecyclerView) findViewById(R.id.recview);
         recview.setLayoutManager(new LinearLayoutManager(this));
 
+
+        Intent intent = getIntent();
+        String Title = intent.getExtras().getString("title");
+
+
+
         FirebaseRecyclerOptions<Service> options =
                 new FirebaseRecyclerOptions.Builder<Service>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Services"), Service.class)
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Services").orderByChild("area").equalTo(Title), Service.class)
                 .build();
          adapter = new ServiceAdapter(options);
          recview.setAdapter(adapter);
-}
+
+
+
+
+    }
 
         @Override
         protected  void onStart(){

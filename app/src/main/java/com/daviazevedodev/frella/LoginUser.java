@@ -72,10 +72,13 @@ public class LoginUser extends AppCompatActivity {
 
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser != null) {
+            Intent intent = new Intent(LoginUser.this, Home.class);
+            startActivity(intent);
+            finish();
         }else {
 
-            }
         }
+    }
 
 
     private void login(String email, String password){

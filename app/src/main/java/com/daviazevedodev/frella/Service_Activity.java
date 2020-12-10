@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daviazevedodev.frella.Fragments.CreateService;
-import com.daviazevedodev.frella.Fragments.ProfileUser;
+import com.daviazevedodev.frella.Fragments.MyServices;
 import com.daviazevedodev.frella.Model.Service;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,10 +49,10 @@ public class Service_Activity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Service> options =
                 new FirebaseRecyclerOptions.Builder<Service>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Services").orderByChild("area").equalTo(Title), Service.class)
-                .build();
-         adapter = new ServiceAdapter(options);
-         recview.setAdapter(adapter);
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Services").orderByChild("area").equalTo(Title), Service.class)
+                        .build();
+        adapter = new ServiceAdapter(options);
+        recview.setAdapter(adapter);
 
 
 
@@ -105,7 +104,7 @@ public class Service_Activity extends AppCompatActivity {
                     return true;
 
                 case R.id.perfil:
-                    ProfileUser timesFragment2 = new ProfileUser();
+                    MyServices timesFragment2 = new MyServices();
                     getSupportFragmentManager().beginTransaction().replace(R.id.bloco2, timesFragment2).commit();
 
                     FrameLayout fl2 = (FrameLayout) findViewById(R.id.bloco2);
@@ -115,7 +114,7 @@ public class Service_Activity extends AppCompatActivity {
                     TextView text_name2 = (TextView) findViewById(R.id.textview_service);
                     ImageView image_person2 = (ImageView) findViewById(R.id.image_service);
 
-                    text_name2.setText("Meu Perfil"); image_person2.setImageResource(R.drawable.ic_baseline_person_24);
+                    text_name2.setText("Meus Serviços"); image_person2.setImageResource(R.drawable.ic_baseline_folder_shared_24);
 
 
                     recview2.setVisibility(View.INVISIBLE);

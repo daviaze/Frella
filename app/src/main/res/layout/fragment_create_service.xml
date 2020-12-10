@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    tools:context=".Fragments.CreateService"
-    >
+    tools:context=".Fragments.CreateService">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,9 @@
        >
 
 
+
         <EditText
+            android:layout_marginTop="20dp"
             android:id="@+id/service_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,6 +156,10 @@
             />
 
 
+
+
     </LinearLayout>
+
+
 
 </FrameLayout>

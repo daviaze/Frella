@@ -1,41 +1,30 @@
 package com.daviazevedodev.frella;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daviazevedodev.frella.Fragments.CreateService;
-import com.daviazevedodev.frella.Fragments.ProfileUser;
+import com.daviazevedodev.frella.Fragments.MyServices;
 import com.daviazevedodev.frella.Model.Categoria;
-import com.daviazevedodev.frella.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +33,7 @@ public class Home extends AppCompatActivity {
     private TextView textview_name, textview_city;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
+    private FirebaseUser aut;
     public List<Categoria> listcategoria;
 
 
@@ -55,6 +45,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         textview_name = findViewById(R.id.textview_name);
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -98,7 +89,12 @@ public class Home extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
+
+
+
     }
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -127,10 +123,11 @@ public class Home extends AppCompatActivity {
                 case R.id.home:
                     startActivity(new Intent (getApplicationContext(), Home.class));
                     overridePendingTransition(0,0);
+
                     return true;
 
                 case R.id.perfil:
-                    ProfileUser timesFragment2 = new ProfileUser();
+                    MyServices timesFragment2 = new MyServices();
                     getSupportFragmentManager().beginTransaction().replace(R.id.bloco, timesFragment2).commit();
 
                     FrameLayout fl2 = (FrameLayout) findViewById(R.id.bloco);
@@ -138,7 +135,7 @@ public class Home extends AppCompatActivity {
                     TextView text_name2 = (TextView) findViewById(R.id.textview_name);
                     ImageView image_person2 = (ImageView) findViewById(R.id.image_person);
 
-                    text_name2.setText("Meu Perfil"); image_person2.setImageResource(R.drawable.ic_baseline_person_24);
+                    text_name2.setText("Meus Serviços"); image_person2.setImageResource(R.drawable.ic_baseline_folder_shared_24);
 
 
                     feed2.setVisibility(View.INVISIBLE);
@@ -153,6 +150,11 @@ public class Home extends AppCompatActivity {
     };
 
 
-
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(Home.this, LoginUser.class);
+        startActivity(intent);
+        finish();
+    }
 }
 

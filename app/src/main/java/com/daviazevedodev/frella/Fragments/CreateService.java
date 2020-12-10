@@ -2,12 +2,9 @@ package com.daviazevedodev.frella.Fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +15,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daviazevedodev.frella.LoginUser;
 import com.daviazevedodev.frella.Model.Service;
-import com.daviazevedodev.frella.Model.User;
 import com.daviazevedodev.frella.R;
-import com.daviazevedodev.frella.RegisterUser;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 
 public class CreateService extends Fragment {
@@ -43,9 +35,18 @@ public class CreateService extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    private TabLayout tabs;
+    private TabItem tabCriar;
+    private TabItem tabTodos;
+    private ViewPager viewPager;
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+
     Service service;
 
-
+    public static CreateService getInstance(){
+        CreateService createService = new CreateService();
+        return createService;
+    }
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,16 +91,21 @@ public class CreateService extends Fragment {
                 String worksvalue = works_value.getText().toString();
                 String tellvalue = tell_value.getText().toString();
                 String descriptionvalue = description_value.getText().toString();
-
+                String id_value = currentFirebaseUser.getUid();
 
                 service.setName_service(servicevalue);
                 service.setName_person(namevalue);
                 service.setTelephone(tellvalue);
                 service.setDescription(descriptionvalue);
                 service.setPortifolio(worksvalue);
+                service.setId_user(id_value);
 
-
+                if (service_value.getText().toString().isEmpty() || (name_value.getText().toString().isEmpty()) || (works_value.getText().toString().isEmpty()) || (tell_value.getText().toString().isEmpty()) || (description_value.getText().toString().isEmpty()))  {
+                    Toast.makeText(getContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                }else {
                     mDatabase.push().setValue(service);
+                    Toast.makeText(getContext(), "Serviço criado com sucesso!", Toast.LENGTH_SHORT).show();
+                }
 
 
 

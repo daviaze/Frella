@@ -6,15 +6,15 @@
         android:icon="@drawable/ic_baseline_add_circle_24"
         />
 
+
+
     <item android:title="Explorar"
         android:id="@+id/home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:checked="true"
-        android:visible="true"
-        android:visibility="gone"
-        />
+               />
 
-    <item android:title="Perfil"
+    <item android:title="Meus Serviços"
         android:id="@+id/perfil"
-        android:icon="@drawable/ic_baseline_person_24"/>
+        android:icon="@drawable/ic_baseline_folder_shared_24"/>
+
 </menu>

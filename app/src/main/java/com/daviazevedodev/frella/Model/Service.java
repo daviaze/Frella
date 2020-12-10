@@ -2,6 +2,10 @@ package com.daviazevedodev.frella.Model;
 
 import android.widget.RadioButton;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Service {
 
     private String name_service;
@@ -10,17 +14,28 @@ public class Service {
     private String telephone;
     private String description;
     private String area;
+    FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
+    public String getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(String id_user) {
+        this.id_user = id_user;
+    }
+
+    private String id_user;
 
     public Service () {}
 
-    public Service(String name_service, String name_person, String portifolio, String telephone, String description, String area){
+    public Service(String name_service, String name_person, String portifolio, String telephone, String description, String area, String id_user){
         this.name_service = name_service;
         this.name_person = name_person;
         this.portifolio = portifolio;
         this.telephone = telephone;
         this.description = description;
         this.area = area;
+        this.id_user=id_user;
 
     }
 
@@ -72,5 +87,9 @@ public class Service {
     public void setArea(String area) {
         this.area = area;
     }
+
+    public static void remover(Service service){
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        FirebaseDatabase.getInstance().getReference().child("Services").removeValue();    }
 
 }
